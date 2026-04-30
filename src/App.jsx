@@ -1,24 +1,32 @@
 import { useState } from 'react'
 import './App.css'
+import Cadastro from './paginas/cadastro'
+import Usuarios from './paginas/usuarios'
+import Login from './paginas/login'
+
 
 function App() {
-const [tela,setTela1] = useState('login') 
+ const [tela, setTela] = useState()
 
- const renderiarTela = () => {
-  if (tela === 'login') {
-  return 'login'
-  } else if (tela ==='cadastro') {
-  return 'cadastro'
+  const renderizarTela = () => {
+   if (tela === 'login'){
+     return <Login/>
+   } else if (tela === 'cadastro') {
+      return <Cadastro/>
+   } else if (tela === 'usuarios') {
+      return <Usuarios/>
+   }
   }
-}
-const trocarTela = (pagina)=>{
-tela = pagina
-}
-return (
-  <>
-        <h1>dead cell</h1>
-      <button onClick={trocarTela('login')}>login</button>
-      <button onClick={trpacarTela('cadastro')}>cadastro</button>
+  const trocarTela = (pagina) => {
+    setTela(pagina)
+  }
+  
+  return (
+    <>
+      <h1>bolsonaro</h1>
+      <button onClick={ () => trocarTela('login')}>login</button>
+      <button onClick={ () => trocarTela('cadastro')}>cadastro</button>
+      <button onClick={ () => trocarTela('usuarios')}>usuarios</button>
       {renderizarTela()}
     </>
   )
